@@ -1,0 +1,2 @@
+echo "" | openssl s_client -connect federation.eams.army.mil:443 -prexit 2>/dev/null | sed -n -e '/BEGIN\ CERTIFICATE/,/END\ CERTIFICATE/ p' > eamsa/cacerts/full-chain.pem
+cat eamsa/cacerts/0-DoD_Root_CA_3.cer >> eamsa/cacerts/full-chain.pem

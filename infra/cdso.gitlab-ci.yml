@@ -1,0 +1,140 @@
+include:
+ - component: $CI_SERVER_FQDN/cdsov2/cdso/review@main
+   inputs:
+    name: primus
+    pipeline_type: application-container
+ - component: $CI_SERVER_FQDN/cdsov2/cdso/review@main
+   inputs:
+    name: primus
+    pipeline_type: "sdd"
+
+.sonarqube:needs:
+ needs: ['unit-tests']
+
+push-to-test-acr:
+ variables:
+  IMAGE_TAG: 'test' # Allows user to override at runtime, otherwise will be set in script
+ stage: deliver
+ when: manual
+ needs: []
+ image: registry.levelup.cce.af.mil/cdsov2/containers/approved-tool/kaniko:latest
+ tags:
+  - cdso
+ before_script: # configures Kaniko to use the Azure Credentials Helper for auth
+  - |
+   mkdir -p /kaniko/.docker
+   cat > /kaniko/.docker/config.json << EOF
+   { "credHelpers": { "${ACR_TEST}": "acr-env" } }
+   EOF
+ script:
+  - VERBOSITY=${BUILD_CONTAINER_DEBUG+debug}
+  - |
+   if [ -z "$IMAGE_TAG" ]; then
+     if [ -n "$CI_COMMIT_TAG" ]; then
+       IMAGE_TAG="$CI_COMMIT_TAG"
+     else
+       IMAGE_TAG="latest"
+     fi
+   fi
+  - /kaniko/executor
+    --context "${DOCKER_CONTEXT_PATH:-.}"
+    --dockerfile "${DOCKERFILE_FOLDER:-.}/Dockerfile"
+    --destination "${ACR_TEST}/primus:${IMAGE_TAG}"
+    --label org.opencontainers.image.url=${CI_PROJECT_URL}
+    --label org.opencontainers.image.source=${CI_PROJECT_URL}
+    --label org.opencontainers.image.title=${CI_PROJECT_PATH}
+    --label org.opencontainers.image.ref.name=${CI_COMMIT_REF_NAME}
+    --label org.opencontainers.image.revision=${CI_COMMIT_SHA}
+    --label org.opencontainers.image.created=${CI_JOB_STARTED_AT}
+    --digest-file="container.env"
+    --cache=false
+    --single-snapshot
+    --compressed-caching=false
+    | tee build.log
+  - export BUILD_STATUS=$?
+  - sed -i "s|:|=|g" container.env
+  - echo -e "\nIMAGE_LOCATION=${ACR_TEST}/primus:${IMAGE_TAG}"
+  - exit $BUILD_STATUS
+ artifacts:
+  paths:
+   - build.log
+  expire_in: 1 week
+  when: always
+
+push-to-prod-acr:
+ variables:
+  IMAGE_TAG: 'prod' # Allows user to override at runtime, otherwise will be set in script
+ stage: deliver
+ when: manual
+ needs: []
+ image: registry.levelup.cce.af.mil/cdsov2/containers/approved-tool/kaniko:latest
+ tags:
+  - cdso
+ before_script: # configures Kaniko to use the Azure Credentials Helper for auth
+  - |
+   mkdir -p /kaniko/.docker
+   cat > /kaniko/.docker/config.json << EOF
+   { "credHelpers": { "${ACR_PROD}": "acr-env" } }
+   EOF
+ script:
+  - VERBOSITY=${BUILD_CONTAINER_DEBUG+debug}
+  - |
+   if [ -z "$IMAGE_TAG" ]; then
+     if [ -n "$CI_COMMIT_TAG" ]; then
+       IMAGE_TAG="$CI_COMMIT_TAG"
+     else
+       IMAGE_TAG="latest"
+     fi
+   fi
+  - /kaniko/executor
+    --context "${DOCKER_CONTEXT_PATH:-.}"
+    --dockerfile "${DOCKERFILE_FOLDER:-.}/Dockerfile"
+    --destination "${ACR_PROD}/primus:${IMAGE_TAG}"
+    --label org.opencontainers.image.url=${CI_PROJECT_URL}
+    --label org.opencontainers.image.source=${CI_PROJECT_URL}
+    --label org.opencontainers.image.title=${CI_PROJECT_PATH}
+    --label org.opencontainers.image.ref.name=${CI_COMMIT_REF_NAME}
+    --label org.opencontainers.image.revision=${CI_COMMIT_SHA}
+    --label org.opencontainers.image.created=${CI_JOB_STARTED_AT}
+    --digest-file="container.env"
+    --cache=false
+    --single-snapshot
+    --compressed-caching=false
+    | tee build.log
+  - export BUILD_STATUS=$?
+  - sed -i "s|:|=|g" container.env
+  - echo -e "\nIMAGE_LOCATION=${ACR_PROD}/primus:${IMAGE_TAG}"
+  - exit $BUILD_STATUS
+ artifacts:
+  paths:
+   - build.log
+  expire_in: 1 week
+  when: always
+
+variables:
+ # these first three variables are the required minimum variables for container pipelines
+ DOCKERFILE_FOLDER: infra/cDSO
+
+ DATABASE_URL: postgres://postgres:postgres@db:5432/primus
+ AUTH_URL: http://localhost:3000
+ AUTH_SECRET: p1YbagoRhUm8h4uBCw/AdZjpjxK2cdWJPAs49D4dSss=
+ NEXT_PUBLIC_PROVIDER_ID: 'keycloak'
+ PROVIDER_NAME: 'Keycloak'
+ PROVIDER_CLIENT_ID: nexttest
+ PROVIDER_CLIENT_SECRET: AcLEzuugbpfVvtC6SbmYRuHIgBb2BhI4
+ PROVIDER_ISSUER: http://keycloak:8080/realms/TestRealm
+
+ # Increased visibility while deploying to pipeline
+ DEBUG_SYFT_GRYPE: 'True'
+ BUILD_CONTAINER_DEBUG: true
+ CI_DEBUG_SERVICES: true
+
+ # Used for Postgres db
+ NMAP_HOST_TIMEOUT: 300 # Up timeout to 5 minutes for nmap
+
+ SQ_PROPERTIES: |
+  sonar.language=ts
+  sonar.sources=src
+  sonar.tests=src/test
+  sonar.typescript.lcov.reportPaths=coverage/lcov.info
+  sonar.exclusions=**/node_modules/**,**/build/**,**/dist/**,**/*.test.*,**/*.spec.*,infra/**,**/test/**,**/cypress/**,**/prisma/***

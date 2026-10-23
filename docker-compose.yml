@@ -1,0 +1,82 @@
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:21.1.1
+    ports:
+      - '8080:8080'
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+    volumes:
+      - ./infra/keycloak/realm-data:/opt/keycloak/data/import
+    command: start-dev --import-realm
+    profiles:
+      - next
+
+  db:
+    image: postgres:latest
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./infra/db/init_db.sql:/docker-entrypoint-initdb.d/init_db.sql
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      # Ensure the 'primus' database is created on startup
+      - POSTGRES_DB=primus
+
+  next-prod:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    environment:
+    - AUTH_URL=http://localhost:3000
+    - AUTH_SECRET=p1YbagoRhUm8h4uBCw/AdZjpjxK2cdWJPAs49D4dSss=
+    - NEXT_PUBLIC_PROVIDER_ID=eams-a
+    - PROVIDER_NAME=EAMS-A
+    - PROVIDER_CLIENT_ID=primus.azurewebsites.us
+    - PROVIDER_CLIENT_SECRET=foo
+    - PROVIDER_ISSUER=https://federation.eams.army.mil/oidc/primus.azurewebsites.us
+    - PROVIDER_LOGOUT_URL=https://federation.eams.army.mil/pool/sso/oidc/logout
+    - NODE_ENV=production
+    - DATABASE_URL=postgres://postgres:postgres@db:5432/primus
+    - HOSTNAME=0.0.0.0
+    - PORT=3000
+    restart: on-failure
+    depends_on:
+      - db
+    profiles:
+      - next-prod
+
+  next:
+    image: node:20-bullseye
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/app
+      - /app/node_modules
+    working_dir: /app
+    command: bash -c "npm install && npm run db:migrate-dev && npm run db:seed && npm run dev"
+    environment:
+      - AUTH_URL=http://localhost:3000
+      - AUTH_SECRET=p1YbagoRhUm8h4uBCw/AdZjpjxK2cdWJPAs49D4dSss=
+      - NEXT_PUBLIC_PROVIDER_ID=keycloak
+      - PROVIDER_NAME=Keycloak
+      - PROVIDER_CLIENT_ID=nexttest
+      - PROVIDER_CLIENT_SECRET=AcLEzuugbpfVvtC6SbmYRuHIgBb2BhI4
+      - PROVIDER_ISSUER=http://keycloak:8080/realms/TestRealm
+      - PROVIDER_LOGOUT_URL=http://keycloak:8080/realms/TestRealm/protocol/openid-connect/logout
+      - NODE_ENV=development
+      - DATABASE_URL=postgres://postgres:postgres@db:5432/primus
+    restart: on-failure
+    depends_on:
+      - db
+      - keycloak
+    profiles:
+      - next
+
+x-defaults:
+  profiles:
+    - next
+    - next-prod

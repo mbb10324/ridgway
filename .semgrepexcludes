@@ -1,0 +1,4 @@
+rules.community.typescript.react.portability.i18next.jsx-not-internationalized
+rules.community.typescript.react.best-practice.react-props-spreading
+rules.community.generic.ci.audit.changed-semgrepignore
+rules.community.json.npm.security.package-dependencies-check

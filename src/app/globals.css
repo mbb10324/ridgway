@@ -1,0 +1,179 @@
+@import 'tailwindcss';
+
+@theme {
+	--color-custom-dark-gray: #121110;
+	--color-custom-medium-gray: #35353c;
+	--color-custom-transparent-gray: #52525b80;
+	--color-custom-transparent-medium-gray: #4040404d;
+	--color-custom-primary: #34d399;
+
+	--shadow-custom-light: 0px 0px 40px 0px #00000033;
+	--shadow-custom-inside: inset 0px 15px 15px -15px #f9fafb33;
+
+	--translate-20-percent: 20%;
+	--translate-30-percent: 30%;
+	--translate-45-percent: 45%;
+	--translate-60-percent: 60%;
+	--translate-70-percent: 70%;
+	--translate-85-percent: 85%;
+	--translate-90-percent: 90%;
+
+	--radius-4xl: 3rem;
+
+	--container-60-percent: 60%;
+	--container-90-percent: 90%;
+	--container-lg-breakpoint: 600px;
+	--container-xl-breakpoint: 1280px;
+
+	--width-lg-breakpoint: 500px;
+	--width-sm-ellipse: 850px;
+	--width-lg-ellipse: 2000px;
+	--width-sm-globe: 794px;
+	--width-lg-globe: 900px;
+
+	--height-list-item: 600px;
+	--height-sm-ellipse: 650px;
+	--height-lg-ellipse: 1400px;
+	--height-sm-globe: 795px;
+	--height-lg-globe: 900px;
+	--height-10-percent: 10vh;
+	--height-80-percent: 80vh;
+
+	--max-height-90-percent: 90%;
+
+	/* Classification Banner Colors */
+	--color-custom-unclassified: #0e7a3c;
+	--color-custom-cui: #502b85;
+	--color-custom-classified: #b48bff;
+	--color-custom-confidential: #043ac7;
+	--color-custom-secret: #fd214d;
+	--color-custom-top-secret: #fd6d02;
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+	*,
+	::after,
+	::before,
+	::backdrop,
+	::file-selector-button {
+		border-color: var(--color-gray-200, currentcolor);
+	}
+}
+
+body {
+	height: 100%;
+	min-height: 100vh;
+	width: 100vw;
+	overflow-x: hidden;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	color: white;
+}
+
+.main-background {
+	background: linear-gradient(175.3deg, #121110 3.8%, #35353c 135.73%);
+	background-attachment: fixed;
+}
+
+@supports (-webkit-touch-callout: none) {
+	.main-background {
+		background-attachment: scroll;
+		background-size: cover;
+		background-clip: border-box;
+		-webkit-background-clip: border-box;
+	}
+}
+
+/* Custom Animations */
+.skeleton-background {
+	background: linear-gradient(90deg, #40404050, #5f5f5f50, #40404050);
+	background-size: 200% 100%;
+	animation: skeleton-loading 3s infinite linear;
+}
+
+@keyframes skeleton-loading {
+	0% {
+		background-position: 200% 0;
+	}
+	100% {
+		background-position: -200% 0;
+	}
+}
+
+.backdrop-bloom {
+	height: 1px;
+	width: 1px;
+	border-radius: 100%;
+	box-shadow: 0px 0px 250px 250px #34d39915;
+	animation: bloom 1s ease-in-out;
+	-moz-animation: bloom 1s ease-in-out;
+	-webkit-animation: bloom 1s ease-in-out;
+}
+
+@keyframes bloom {
+	from {
+		box-shadow: 0px 0px 0px 0px #34d39915;
+	}
+	to {
+		box-shadow: 0px 0px 250px 250px #34d39915;
+	}
+}
+
+.fade-in {
+	animation: fadeIn 0.5s ease-in-out;
+	-moz-animation: fadeIn 0.5s ease-in-out;
+	-webkit-animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+/* Custom Toastify Styles */
+:root {
+	--toastify-color-dark: #2d2d31 !important;
+	--toastify-color-success: #34d399 !important;
+	--toastify-color-error: #f87171 !important;
+}
+
+.Toastify__toast-theme--dark {
+	box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Custom Inlines */
+.color-scheme-dark {
+	color-scheme: dark;
+}
+
+/* Custom Popover Styles */
+.popover-content {
+	position: absolute;
+	z-index: 40;
+	transition: all 0.3s ease-in-out;
+	pointer-events: none;
+	opacity: 0;
+	top: var(--popover-top, auto);
+	bottom: var(--popover-bottom, auto);
+	left: var(--popover-left, auto);
+	right: var(--popover-right, auto);
+	transform: var(--popover-transform, none);
+}
+
+.popover-content.active {
+	pointer-events: auto;
+	opacity: 1;
+}

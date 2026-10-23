@@ -1,0 +1,26 @@
+# Appended to /etc/ssl/openssl.cnf at build time. Loads only the fips provider (crypto) and the
+# base provider (encoders/decoders, no crypto), so non-approved algorithms are unavailable.
+.include /etc/ssl/fipsmodule.cnf
+
+[fips_init]
+providers = fips_provider_sect
+alg_section = fips_algorithm_sect
+ssl_conf = fips_ssl_sect
+
+[fips_provider_sect]
+fips = fips_sect
+base = base_sect
+
+[base_sect]
+activate = 1
+
+[fips_algorithm_sect]
+default_properties = fips=yes
+
+# The fips provider still offers x25519/x448 for TLS key exchange, which its security policy
+# does not allow in approved mode, so only offer approved groups.
+[fips_ssl_sect]
+system_default = fips_ssl_default_sect
+
+[fips_ssl_default_sect]
+Groups = secp256r1:secp384r1:secp521r1:ffdhe2048:ffdhe3072:ffdhe4096

@@ -1,0 +1,33 @@
+# Classification Markings 
+
+**Updated By: Charlie Miller**
+
+**Updated On: 10/28/2024**
+
+## Overview
+
+In order to be compliant with a number of STIGs and DoD guidance, we provide: components, middleware, and helpers to properly annotate the application and its data with appropriate classification markings. 
+
+In the instance of applications that can be captured by a single classification designation (like the Primus starter application), users may define the `CLASSIFICATION` environment variable with one of the following values:
+- Unclassified
+- Classified
+- CUI
+- Confidential
+- Secret
+- Top Secret
+
+If you have need for varying classifications throughout the application, or portions of its data, then continue seeing the example provided in `full`.
+
+## Classification Marking 
+
+### Data in Presentation Layer (UI)
+Provided in the form of a React component - [ClassificationMarking](../src/components/common/ClassificationMarking.tsx), this component displays the classification in a way that is compliant
+with varying requirements (e.g. a banner fixed to the top of the screen). 
+
+### Data in Transit (Middleware) 
+Per requirements, we also provide the designation of application data in transit. This takes the form of a header titled, `Security-Classification` that is appended to all valid responses. See [middleware.ts](../src/middleware.ts) for implementation details.
+
+### Data at Rest (Database) 
+In applications that do not have need for varying classifications, we've found it acceptable to classify individual database tables with comments.
+
+**NOTE:** There is currently no automated process for this. We recommend manually adding a migration to add comments to your tables. Refer to our [existing migration](../prisma/migrations/20241001171355_table_markings/migration.sql) for reference.

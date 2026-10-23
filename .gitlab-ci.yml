@@ -1,0 +1,10 @@
+include:
+  - local: "infra/cenith.gitlab-ci.yml"
+    rules:
+      - if: $CI_SERVER_HOST == 'gitlab.cenithinnovations.com'
+  - local: "infra/cdso.gitlab-ci.yml"
+    rules:
+      - if: $CI_SERVER_HOST == 'code.levelup.cce.af.mil'
+  - local: "infra/cdso.gitlab-ci.yml"
+    rules:
+      - if: $CI_SERVER_HOST == 'code.cdso.army.mil'

@@ -1,0 +1,28 @@
+# Node modules directory (you'll install dependencies in the Docker image)
+node_modules
+
+# Local environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Log files
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Docker-related files
+Dockerfile
+docker-compose.yml
+
+# Miscellaneous files
+.DS_Store
+*.md
+.git
+.gitignore
+
+# Local build output (the image builds its own)
+.next
+coverage

@@ -1,0 +1,77 @@
+default:
+  image: registry.access.redhat.com/ubi9/nodejs-20:latest
+  tags:
+    - docker
+
+primus-lint-job:
+  stage: lint
+  variables:
+    NODE_ENV: development
+  script:
+    - npm ci --cache .npm --prefer-offline
+    - npm run lint
+
+primus-test-job:
+  stage: test
+  variables:
+    NODE_ENV: test
+  script:
+    - npm ci --cache .npm --prefer-offline
+    - npm run test:ci
+  coverage: '/All files[^|]*\|[^|]*\s+([\d\.]+)/'
+  artifacts:
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage/cobertura-coverage.xml
+      junit: junit.xml
+
+primus-smoke-test:
+  stage: build
+  image: docker:latest
+  services:
+    - docker:dind
+  variables:
+    AUTH_URL: http://localhost:3000
+    AUTH_SECRET: p1YbagoRhUm8h4uBCw/AdZjpjxK2cdWJPAs49D4dSss=
+    NEXT_PUBLIC_PROVIDER_ID: 'keycloak'
+    PROVIDER_NAME: 'Keycloak'
+    PROVIDER_CLIENT_ID: nexttest
+    PROVIDER_CLIENT_SECRET: AcLEzuugbpfVvtC6SbmYRuHIgBb2BhI4
+    PROVIDER_ISSUER: http://keycloak:8080/realms/TestRealm
+    NODE_ENV: production
+    DATABASE_URL: postgres://postgres:postgres@postgres:5432/primus
+    SKIP_SERVER_VALIDATION: 'true'
+  script:
+    # Stop and remove any existing container with the name "primus-container"
+    - docker stop primus-container || true
+    - docker rm primus-container || true
+
+    # Build the Docker image
+    - docker build --build-arg NEXT_PUBLIC_PROVIDER_ID=$NEXT_PUBLIC_PROVIDER_ID --build-arg SKIP_SERVER_VALIDATION=$SKIP_SERVER_VALIDATION --build-arg NODE_ENV=$NODE_ENV -t primus-ci .
+
+    # Run the Docker container in detached mode. There is no database in this job, so run the
+    # server directly instead of start.mjs (which runs migrations first).
+    - docker run --rm -d --name primus-container -e AUTH_URL=$AUTH_URL -e AUTH_SECRET=$AUTH_SECRET -e NEXT_PUBLIC_PROVIDER_ID=$NEXT_PUBLIC_PROVIDER_ID -e PROVIDER_NAME=$PROVIDER_NAME -e PROVIDER_CLIENT_ID=$PROVIDER_CLIENT_ID -e PROVIDER_CLIENT_SECRET=$PROVIDER_CLIENT_SECRET -e PROVIDER_ISSUER=$PROVIDER_ISSUER -e NODE_ENV=$NODE_ENV -e DATABASE_URL=$DATABASE_URL primus-ci node server.js
+    - sleep 10
+
+    # The image has no shell or curl (same as production), so use Node to check the server responds
+    - |
+      docker exec primus-container node -e "fetch('$AUTH_URL', { redirect: 'manual' }).then((r) => process.exit(r.status < 400 ? 0 : 1), () => process.exit(1))" || { docker logs primus-container; docker stop primus-container; exit 1; }
+
+    # Kill the container once the server is confirmed to be running
+    - docker stop primus-container
+
+primus-audit-job:
+  stage: audit
+  allow_failure: true
+  script:
+    - npm ci --cache .npm --prefer-offline
+    # Only make the job fail if there are moderates or above in prod deps.
+    - npm audit --production --audit-level moderate
+
+stages:
+  - audit
+  - lint
+  - test
+  - build

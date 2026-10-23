@@ -1,0 +1,78 @@
+security_group: "xviii_ods" # This creates artifacts for our ISSM at  https://code.levelup.cce.af.mil/cdsov2/security/xviii_ods/review
+organization: "XVIII_ABC_ODS" # This just puts our name on artifact labels
+deployment_level: DEVELOPMENT
+
+primus_sdd:
+   project_type: "sdd"
+   sdd_path: sdd.md
+
+# primus_sdd-ta:
+#    project_type: "tenant-agreement"
+#    tenant_agreement_path: tenant-agreement.md
+   
+primus:
+ project_type: application-container
+ connection_context: EXTERNAL
+ container_lifespan: PERSISTENT
+ dockerfile_folder: ./infra/cDSO/
+ build_context: .
+ container_spec:
+  root_user: ''
+  non_minimized: ''
+ hadolint:
+  ignores: []
+ semgrep:
+  exclusions:
+   - app.rules.community.typescript.react.portability.i18next.jsx-not-internationalized
+   - app.rules.community.typescript.react.best-practice.react-props-spreading
+   - app.rules.community.generic.ci.audit.changed-semgrepignore
+   - app.rules.community.json.npm.security.package-dependencies-check
+   - app.rules.community.dockerfile.best-practice.missing-image-version
+  ignore:
+   - ./coverage/*
+   - ./src/test/*
+ trufflehog:
+  false_positives: []
+  excluded_files:
+   - cdso_config.yml
+   - docker-compose.yml
+   - infra/cenith.gitlab-ci.yml
+   - infra/cdso.gitlab-ci.yml
+   - .gitlab-ci.yml
+   - documentation/stigs/STIG_CHECKLIST_01OCT25
+ zap:
+  debug: 'true'
+  service_ports:
+   - 5432
+  scanned_image_variables:
+   DATABASE_URL: postgres://postgres:postgres@db:5432/primus
+   AUTH_URL: http://localhost:3000
+   AUTH_SECRET: p1YbagoRhUm8h4uBCw/AdZjpjxK2cdWJPAs49D4dSss=
+   NEXT_PUBLIC_PROVIDER_ID: keycloak
+   PROVIDER_NAME: Keycloak
+   PROVIDER_CLIENT_ID: nexttest
+   PROVIDER_CLIENT_SECRET: AcLEzuugbpfVvtC6SbmYRuHIgBb2BhI4
+   PROVIDER_ISSUER: http://keycloak:8080/realms/TestRealm
+   NODE_ENV: production
+  gitlab_services:
+   - name: registry.levelup.cce.af.mil/cdso/containers/base-registry/postgres:16.6.5
+     alias: db
+     variables:
+      POSTGRES_DB: primus
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+  wait: 10
+  mitigations: {}
+ fortify:
+  scan_args: []
+  mitigations: {}
+
+ mitigations:
+  - CVE-2026-85091: >-
+      Vulnerability Response: Mitigated
+      Description: Upstream Alpine image does not have a patch as of 24SEP26.
+      Mitigation: Awaiting upstream Alpine fix. Image is rebuilt weekly and will pick up the patch once released.
+  - CVE-2024-9410: >-
+      Vulnerability Response: False Positive
+      Description: Ada.cx's Sentry configuration allowed for blind server-side request forgeries (SSRF) through the use of a data scraping endpoint. Sentry is not used within our application.
+      Mitigation: Not applicable; Sentry is not a dependency of our application.
