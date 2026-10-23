@@ -1,0 +1,62 @@
+.menu-btn {
+	display: block;
+	background-color: transparent;
+	width: 39px;
+	height: 39px;
+	cursor: pointer;
+	transition: all 0.3s ease-in-out;
+	z-index: 100;
+	scale: 1.8;
+	margin-right: 5rem;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.menu-open:hover {
+	transform: rotate(180deg);
+}
+
+.menu-btn-line {
+	transition: all 0.3s ease-in-out;
+}
+
+.invert-menu {
+	border: 1px solid var(--primary) !important;
+}
+
+.menu-btn .menu-btn-line {
+	display: block;
+	margin: 6px auto;
+	width: 20px;
+	border: 1px solid var(--secondary);
+	transition: all 0.3s ease-in-out;
+}
+
+.menu-btn .menu-btn-line.one {
+	margin-top: 9px;
+}
+
+.menu-btn .menu-btn-line.three {
+	margin-bottom: 9px;
+}
+
+.menu-btn.menu-open .menu-btn-line.one {
+	margin-top: 9px;
+	width: 28px;
+	transform-origin: center;
+	transform: translate(0, 9px) rotate(45deg);
+}
+
+.menu-btn.menu-open .menu-btn-line.two {
+	width: 0;
+}
+
+.menu-btn.menu-open .menu-btn-line.three {
+	margin-bottom: 8px;
+	width: 28px;
+	transform-origin: center;
+	transform: translate(0, -8px) rotate(-45deg);
+}
+
+.rotate {
+	transform: rotate(180deg);
+}

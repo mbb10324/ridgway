@@ -1,0 +1,62 @@
+.header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 10vh;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	z-index: 100;
+	padding: 2rem;
+	transition: all 0.3s ease-in-out;
+}
+
+.header-invert {
+	background-color: var(--tan);
+}
+
+.header img {
+	width: 200px;
+	height: auto;
+	cursor: pointer;
+	transition: all 0.5s cubic-bezier(0.79, -1, 0.37, 2);
+}
+
+.header img:hover {
+	transform: scale(1.1);
+}
+
+.header-line {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100vw;
+	height: 2px;
+	background-color: var(--primary);
+	animation: growRight 0.8s linear;
+}
+
+@keyframes growRight {
+	0% {
+		width: 0;
+	}
+	100% {
+		width: 100vw;
+	}
+}
+
+.invert-header {
+	background-color: var(--secondary) !important;
+}
+
+@media screen and (max-width: 900px) {
+	.header {
+		padding-top: 0px;
+		padding-bottom: 0px;
+		background-color: var(--primary);
+	}
+	.header img {
+		width: 150px;
+	}
+}

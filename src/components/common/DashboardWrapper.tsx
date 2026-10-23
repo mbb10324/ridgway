@@ -2,7 +2,7 @@
 
 import DeleteAccountProvider from '../profile/delete-account/DeleteAccountContext';
 import DeleteAccount from '../profile/delete-account/DeleteAccount';
-import Header from '@/components/header/Header';
+// import Header from '@/components/header/Header';
 import BackToTop from './BackToTop';
 
 type DashboardWrapperProps = {
@@ -14,7 +14,7 @@ export default function DashboardWrapper(props: Readonly<DashboardWrapperProps>)
 
 	return (
 		<DeleteAccountProvider>
-			<Header />
+			{/* <Header /> */}
 			<div className='fade-in pb-8 px-8 relative w-screen flex flex-col items-center'>
 				<div className='w-full max-w-xl-breakpoint'>
 					{children}

@@ -1,0 +1,129 @@
+.footer {
+	position: relative;
+	height: 200px;
+	border-top: 2px solid var(--secondary);
+	width: 100%;
+	background-color: var(--primary);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 5;
+}
+
+.footer-info {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	gap: 10rem;
+}
+
+.footer h3 {
+	font-size: 3rem;
+	color: var(--secondary);
+	font-family: Manrope-Regular;
+	text-align: center;
+	transition: all 0.5s cubic-bezier(0.79, -1, 0.37, 2);
+	cursor: pointer;
+}
+
+.footer h3:hover {
+	scale: 1.1;
+}
+
+.footer span {
+	font-size: 3rem;
+	color: var(--secondary);
+	font-family: Voyage-Regular;
+}
+
+.footer-legals {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
+	color: var(--yellow);
+}
+
+.footer-legals p {
+	cursor: pointer;
+	transition: all 0.5s cubic-bezier(0.79, -1, 0.37, 2);
+}
+
+.footer-legals p,
+.footer-legals span {
+	font-size: 32px;
+}
+
+.footer-legals p:hover {
+	scale: 1.1;
+}
+
+.footer-no-hover {
+	pointer-events: none;
+	color: var(--secondary) !important;
+}
+
+.footer-socials {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	gap: 2rem;
+	padding: 10px;
+	border: 2px solid var(--tan);
+	border-radius: 9999px;
+}
+
+.footer-socials-icons {
+	color: var(--blue);
+	padding: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 9999px;
+	transition: all 0.3s linear;
+	cursor: pointer;
+}
+
+.footer-socials-icons svg {
+	height: 3vw;
+	width: 3vw;
+}
+
+.footer-socials-icons:hover {
+	color: var(--primary);
+	background-color: var(--blue);
+}
+
+.footer-btn-wrapper {
+	margin: auto;
+}
+
+@media screen and (max-width: 1560px) {
+	.footer-info {
+		padding: 0 50px;
+		gap: 30px;
+	}
+	.footer-legals p,
+	.footer-legals span {
+		font-size: 24px-;
+	}
+}
+
+@media screen and (max-width: 900px) {
+	.footer {
+		height: 300px;
+	}
+	.footer-info {
+		flex-direction: column;
+		gap: 30px;
+	}
+	.footer-socials-icons svg {
+		height: 5vw;
+		width: 5vw;
+	}
+	.footer-legals p {
+		font-size: 16px;
+	}
+}

@@ -1,95 +1,107 @@
-@import 'tailwindcss';
-
-@theme {
-	--color-custom-dark-gray: #121110;
-	--color-custom-medium-gray: #35353c;
-	--color-custom-transparent-gray: #52525b80;
-	--color-custom-transparent-medium-gray: #4040404d;
-	--color-custom-primary: #34d399;
-
-	--shadow-custom-light: 0px 0px 40px 0px #00000033;
-	--shadow-custom-inside: inset 0px 15px 15px -15px #f9fafb33;
-
-	--translate-20-percent: 20%;
-	--translate-30-percent: 30%;
-	--translate-45-percent: 45%;
-	--translate-60-percent: 60%;
-	--translate-70-percent: 70%;
-	--translate-85-percent: 85%;
-	--translate-90-percent: 90%;
-
-	--radius-4xl: 3rem;
-
-	--container-60-percent: 60%;
-	--container-90-percent: 90%;
-	--container-lg-breakpoint: 600px;
-	--container-xl-breakpoint: 1280px;
-
-	--width-lg-breakpoint: 500px;
-	--width-sm-ellipse: 850px;
-	--width-lg-ellipse: 2000px;
-	--width-sm-globe: 794px;
-	--width-lg-globe: 900px;
-
-	--height-list-item: 600px;
-	--height-sm-ellipse: 650px;
-	--height-lg-ellipse: 1400px;
-	--height-sm-globe: 795px;
-	--height-lg-globe: 900px;
-	--height-10-percent: 10vh;
-	--height-80-percent: 80vh;
-
-	--max-height-90-percent: 90%;
-
-	/* Classification Banner Colors */
-	--color-custom-unclassified: #0e7a3c;
-	--color-custom-cui: #502b85;
-	--color-custom-classified: #b48bff;
-	--color-custom-confidential: #043ac7;
-	--color-custom-secret: #fd214d;
-	--color-custom-top-secret: #fd6d02;
+* {
+	margin: 0;
+	padding: 0;
 }
 
-/*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
-@layer base {
-	*,
-	::after,
-	::before,
-	::backdrop,
-	::file-selector-button {
-		border-color: var(--color-gray-200, currentcolor);
-	}
-}
-
+html,
 body {
-	height: 100%;
-	min-height: 100vh;
-	width: 100vw;
-	overflow-x: hidden;
+	background-color: var(--primary);
+	scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+button {
+	text-rendering: geometricPrecision;
+	font-smooth: always;
+	-webkit-font-smoothing: antialiased;
+}
+
+:root {
+	--primary: #141414;
+	--secondary: #f3eee8;
+	--tan: #262523;
+	--blue: #b5c6ed;
+	--pink: #edb5c4;
+	--yellow: #edebb5;
+	--orange: #edd1b5;
+}
+
+/* :root {
+	--primary: #141414;
+	--secondary: #f3eee8;
+	--tan: #262523;
+	--blue: #41ead4;
+	--pink: #ff206e;
+	--yellow: #fbff12;
+	--orange: #ff7920;
+} */
+
+.app {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	color: white;
+	width: 100%;
+	min-height: 100vh;
+	height: 100%;
+	font-family: Voyage-Regular;
+	color: var(--secondary);
+	background-color: var(--primary);
 }
 
-.main-background {
-	background: linear-gradient(175.3deg, #121110 3.8%, #35353c 135.73%);
-	background-attachment: fixed;
+body::-webkit-scrollbar {
+	width: 12px;
 }
 
-@supports (-webkit-touch-callout: none) {
-	.main-background {
-		background-attachment: scroll;
-		background-size: cover;
-		background-clip: border-box;
-		-webkit-background-clip: border-box;
+body::-webkit-scrollbar-track {
+	background-color: rgba(31, 31, 31);
+}
+
+body::-webkit-scrollbar-thumb {
+	background-color: rgb(85, 85, 85);
+	border-radius: 6px;
+	cursor: pointer;
+}
+
+@font-face {
+	font-family: "Voyage-Regular";
+	src: url(../fonts/GI-400.woff) format("woff");
+}
+
+@font-face {
+	font-family: "Manrope-Regular";
+	src: url(../fonts/Manrope-Regular.ttf) format("truetype");
+}
+
+/* Custom Ripple Effect */
+
+.ripple {
+	position: absolute;
+	border-radius: 50%;
+	transform: scale(0);
+	background: #141414;
+	animation: ripple-effect 0.8s linear;
+	pointer-events: none;
+	opacity: 0.5;
+	z-index: 0;
+}
+
+@keyframes ripple-effect {
+	to {
+		transform: scale(3);
+		opacity: 0;
+	}
+}
+
+@media screen and (max-width: 900px) {
+	.ripple {
+		background: #f3eee8;
 	}
 }
 
@@ -177,3 +189,6 @@ body {
 	pointer-events: auto;
 	opacity: 1;
 }
+
+/* ============================================================================= */
+

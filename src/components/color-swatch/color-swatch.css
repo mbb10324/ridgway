@@ -1,0 +1,37 @@
+.swatch {
+	position: absolute;
+	top: -40%;
+	left: -10%;
+	transform: translate(-50%, -50%);
+	height: auto;
+	width: 1250px;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+	transform: rotate(65deg);
+}
+
+.swatch-item {
+	height: 250px;
+	margin: 10px;
+	border-radius: 40px;
+	transition: all 2s ease-in-out;
+}
+
+@media screen and (max-width: 900px) {
+	.swatch {
+		width: 1000px;
+		top: -50%;
+	}
+	.swatch-item {
+		height: 200px;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.swatch {
+		top: -60%;
+	}
+	.swatch-item {
+		height: 150px;
+	}
+}

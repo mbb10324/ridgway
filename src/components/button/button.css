@@ -1,0 +1,30 @@
+.revel-button-wrapper {
+	padding: 10px;
+	border-radius: 9999px;
+	border: 2px solid;
+}
+
+.revel-button {
+	font-size: 2.5vw;
+	font-weight: 600;
+	border-radius: 9999px;
+	font-family: Voyage-Regular;
+	padding: 10px 20px;
+	transition: all 0.3s linear;
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+	position: relative;
+	overflow: hidden;
+}
+
+@media screen and (max-width: 1560px) {
+	.revel-button {
+		font-size: 3vw;
+	}
+}
+
+@media screen and (max-width: 900px) {
+	.revel-button {
+		font-size: 5vw;
+	}
+}
