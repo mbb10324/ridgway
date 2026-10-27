@@ -1,9 +1,10 @@
 import { DeleteAccountContext } from './DeleteAccountContext';
-import Svg from '@/components/svg/Svg';
+import Button from '@/components/button/Button';
 import { useContext } from 'react';
+import '../profile.css';
 
 type DeleteAccountButtonProps = {
-	onClick: () => void;
+	onClick?: () => void;
 };
 
 export default function DeleteAccountButton(props: Readonly<DeleteAccountButtonProps>) {
@@ -11,17 +12,20 @@ export default function DeleteAccountButton(props: Readonly<DeleteAccountButtonP
 	const deleteAccount = useContext(DeleteAccountContext);
 
 	return (
-		<button
-			className='bg-red-500/20 rounded-lg py-2 text-red-300 w-full text-lg flex pl-8 justify-start items-center gap-7 font-semibold hover:bg-red-400/20 transition-all duration-300 ease-in-out'
-			type='button'
-			title='delete-account-btn'
-			onClick={() => {
-				deleteAccount.setShowDeleteAccount(true);
-				onClick();
-			}}
-		>
-			<Svg.TbTrash size={20} />
-			Delete Account
-		</button>
+		<div className='profile-action'>
+			<Button
+				title='delete-account-btn'
+				primary='var(--primary)'
+				secondary='var(--secondary)'
+				backdrop='var(--secondary)'
+				fontSize='clamp(0.875rem, 1.5vw, 1.25rem)'
+				onClick={() => {
+					deleteAccount.setShowDeleteAccount(true);
+					onClick?.();
+				}}
+			>
+				Delete Account
+			</Button>
+		</div>
 	);
 }

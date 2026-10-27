@@ -9,11 +9,12 @@ type ButtonProps = {
 	secondary: string;
 	backdrop?: string;
 	fontSize?: string;
+	title?: string;
 	onClick: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 };
 
 export default function Button(props: Readonly<ButtonProps>) {
-	const { children, primary, secondary, backdrop, fontSize, onClick } = props;
+	const { children, primary, secondary, backdrop, fontSize, title, onClick } = props;
 
 	const { rippleStyle, rippleKey, rippleRef, createRipple } = useRipple();
 	const breakpoint = useBreakpoints(900);
@@ -26,6 +27,7 @@ export default function Button(props: Readonly<ButtonProps>) {
 		<div className='revel-button-wrapper' style={{ borderColor: secondary, backgroundColor: backdropColor }}>
 			<div
 				className='revel-button'
+				title={title}
 				style={{ color: btnTextColor, backgroundColor: btnBackgroundColor, fontSize: fontSize ? fontSize : '2rem' }}
 				onClick={(e) => {
 					onClick(e);

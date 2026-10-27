@@ -6,6 +6,8 @@ import { useEffect, useState } from 'react';
 import './header.css';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import DeleteAccountProvider from '../profile/delete-account/DeleteAccountContext';
+import DeleteAccount from '../profile/delete-account/DeleteAccount';
 
 export default function Header() {
 	const [menuOpen, setMenuOpen] = useState(false);
@@ -34,7 +36,10 @@ export default function Header() {
 				<MenuBtn menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
 				{menuOpen && <div className='header-line' />}
 			</div>
-			<Menu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+			<DeleteAccountProvider>
+				<Menu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+				<DeleteAccount />
+			</DeleteAccountProvider>
 		</>
 	);
 }

@@ -8,6 +8,9 @@ import Modal from '../../common/Modal';
 import { useContext } from 'react';
 import { routes } from '@/routes';
 import { signOut } from '@/utils/auth';
+import Button from '@/components/button/Button';
+import '../../common/auth-dialog.css';
+import './delete-account.css';
 
 // @stig V-222549 | The application must terminate existing user sessions upon account deletion.
 export default function DeleteAccount() {
@@ -36,29 +39,34 @@ export default function DeleteAccount() {
 	return (
 		<>
 			<Modal showModal={showDeleteAccount}>
-				<div className='flex flex-col gap-1 p-8 main-background rounded-3xl'>
-					<h1 className='text-lg font-medium text-center'>Delete Account?</h1>
-					<p className='text-xs text-center'>
+				<div className='auth-dialog auth-dialog--delete-account'>
+					<p className='auth-dialog-label'>Account settings</p>
+					<h2>Delete Account?</h2>
+					<p>
 						You will no longer have access to this account or any associated data, are you sure you would like to proceed?
 						This action can not be undone.
 					</p>
-					<div className='flex flex-row gap-4 w-full items-center justify-center mt-4'>
-						<button
-							className='bg-slate-400 rounded-lg py-1 px-6 text-black text-sm font-semibold hover:bg-slate-400/80 transition-all duration-300 ease-in-out'
+					<div className='delete-account-actions'>
+						<Button
+							primary='var(--secondary)'
+							secondary='var(--tan)'
+							fontSize='1.25rem'
 							onClick={() => setShowDeleteAccount(false)}
 						>
 							Cancel
-						</button>
-						<button
-							className='bg-red-500/20 rounded-lg py-1 px-6 text-red-300 text-sm font-semibold hover:bg-red-400/20 transition-all duration-300 ease-in-out'
+						</Button>
+						<Button
+							primary='var(--pink)'
+							secondary='var(--tan)'
+							fontSize='1.25rem'
 							onClick={() => deleteAccountMutation.mutate()}
 						>
 							Delete
-						</button>
+						</Button>
 					</div>
 				</div>
 			</Modal>
-			<Backdrop show={showDeleteAccount} onClick={() => setShowDeleteAccount(false)} />
+			<Backdrop show={showDeleteAccount} zIndex='z-40' onClick={() => setShowDeleteAccount(false)} />
 		</>
 	);
 }

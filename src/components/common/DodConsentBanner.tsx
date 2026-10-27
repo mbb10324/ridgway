@@ -11,10 +11,11 @@ import Button from '../button/Button';
 // @stig V-222434 | The application must display the Standard Mandatory DoD Notice and Consent Banner before granting access to the application.
 export default function DodConsentBanner({ isLogoutMessage }: Readonly<{ isLogoutMessage: boolean }>) {
 	const [showBanner, setShowBanner] = useState(true);
+	const showConsent = showBanner && !isLogoutMessage;
 
 	return (
 		<>
-			<Modal showModal={showBanner}>
+			<Modal showModal={showConsent}>
 				<div className='auth-dialog auth-dialog--consent'>
 					<p className='auth-dialog-label'>Authorized use only</p>
 					<h1>STANDARD MANDATORY DOD NOTICE AND CONSENT</h1>
@@ -49,7 +50,7 @@ export default function DodConsentBanner({ isLogoutMessage }: Readonly<{ isLogou
 					</Button>
 				</div>
 			</Modal>
-			<Backdrop show={showBanner} zIndex='z-40' />
+			<Backdrop show={showConsent} zIndex='z-40' />
 		</>
 	);
 }

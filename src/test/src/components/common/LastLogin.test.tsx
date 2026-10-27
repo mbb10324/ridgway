@@ -1,5 +1,5 @@
 import { useQuery, type UseQueryResult } from '@tanstack/react-query';
-import LastLoginDisplay from '@/components/common/LastLogin';
+import LastLoginDisplay from '@/components/profile/LastLogin';
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 import { useRouter } from 'next/navigation';

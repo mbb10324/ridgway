@@ -34,7 +34,7 @@
 	width: 100vw;
 	height: 2px;
 	background-color: var(--primary);
-	animation: growRight 0.8s linear;
+	animation: growRight 1s linear;
 }
 
 @keyframes growRight {

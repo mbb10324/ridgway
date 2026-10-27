@@ -20,10 +20,7 @@ describe('UserInitial', () => {
 	it('renders with small size when size is sm', () => {
 		renderWithMocks(createValidNextAuthSession(), 'sm');
 
-		const childOfUserInitial = screen.getByTitle('user-initial').firstChild;
-
-		expect(childOfUserInitial).toHaveClass('text-lg');
-		expect(screen.getByTitle('user-initial')).toHaveClass('w-10 h-10 border');
+		expect(screen.getByTitle('user-initial')).toHaveClass('profile-user-initial-sm');
 	});
 });
 

@@ -2,6 +2,12 @@ import { usePathname, useRouter } from 'next/navigation';
 import ScrollItem from '../../scroll/ScrollItem';
 import './menu.css';
 import LogoutButton from '../profile/LogoutButton';
+import DelayedComponent from '../common/DelayedComponent';
+import UserInfo from '../profile/UserInfo';
+import { useSessionContext } from '@/context/SessionWrapper';
+import UserInitial from '../profile/UserInitial';
+import DeleteAccountButton from '../profile/delete-account/DeleteAccountButton';
+import LastLoginDisplay from '../profile/LastLogin';
 
 type MenuProps = {
 	menuOpen: boolean;
@@ -12,6 +18,7 @@ export default function Menu(props: Readonly<MenuProps>) {
 	const { menuOpen, setMenuOpen } = props;
 	const router = useRouter();
 	const pathname = usePathname();
+	const session = useSessionContext();
 
 	function navigateTo(route: string) {
 		if (pathname === route) {
@@ -45,9 +52,21 @@ export default function Menu(props: Readonly<MenuProps>) {
 								Contact
 							</h2>
 						</ScrollItem>
-						<LogoutButton />
 					</>
 				)}
+			</div>
+			{menuOpen && (
+				<DelayedComponent trigger={menuOpen} delay={500}>
+					<div className='menu-line' />
+				</DelayedComponent>
+			)}
+			<div className='menu-profile'>
+				<h2>Profile</h2>
+				<UserInitial user={session.user} size='lg' />
+				<UserInfo user={session.user} center />
+				<LastLoginDisplay />
+				<DeleteAccountButton onClick={() => setMenuOpen(false)} />
+				<LogoutButton />
 			</div>
 		</div>
 	);

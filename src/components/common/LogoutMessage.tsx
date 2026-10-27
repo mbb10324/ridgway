@@ -8,9 +8,16 @@ import './auth-dialog.css';
 import Button from '../button/Button';
 
 // @stig V-222392 | The application must display an explicit logoff message to users indicating the reliable termination of authenticated communications sessions.
-export default function LogoutMessage({ isLogoutMessage }: Readonly<{ isLogoutMessage: boolean }>) {
+export default function LogoutMessage({
+	isLogoutMessage,
+	onClose
+}: Readonly<{ isLogoutMessage: boolean; onClose?: () => void }>) {
 	const [show, setShow] = useState(isLogoutMessage);
 	const router = useRouter();
+	const close = () => {
+		setShow(false);
+		onClose?.();
+	};
 
 	useEffect(() => {
 		if (isLogoutMessage) {
@@ -25,12 +32,12 @@ export default function LogoutMessage({ isLogoutMessage }: Readonly<{ isLogoutMe
 					<p className='auth-dialog-label'>Session closed</p>
 					<h2>Logged Out</h2>
 					<p>Your session has been terminated and you have successfully logged out of ODS.</p>
-					<Button primary='var(--pink)' secondary='var(--tan)' onClick={() => setShow(false)}>
+					<Button primary='var(--pink)' secondary='var(--tan)' onClick={close}>
 						Close
 					</Button>
 				</div>
 			</Modal>
-			<Backdrop show={show} zIndex='z-40' onClick={() => setShow(false)} />
+			<Backdrop show={show} zIndex='z-40' onClick={close} />
 		</>
 	);
 }

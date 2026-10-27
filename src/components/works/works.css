@@ -58,7 +58,7 @@
 .works-section-imp-text {
 	font-size: 3.5vw;
 	font-family: Voyage-Regular;
-	color: var(--blue);
+	color: var(--pink);
 }
 
 @media screen and (max-width: 1560px) {
