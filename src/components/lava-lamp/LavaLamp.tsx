@@ -52,7 +52,7 @@ export default function LavaLamp(props: Readonly<LavaLampProps>) {
 				<div className={`${theme}1 smallCircle1`} id='smallCircle1'></div>
 				<div className={`${theme}2 smallCircle2`} id='smallCircle2'></div>
 				<div className={`${theme}1 mediumCircle1`}></div>
-				<div className={`${theme}2 mediumCircle2`}></div>
+				{/* <div className={`${theme}2 mediumCircle2`}></div> */}
 				<div className={`${theme}1 bigCircle`}></div>
 			</div>
 		</>

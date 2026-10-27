@@ -48,7 +48,7 @@
 	cursor: pointer;
 	font-size: 24px;
 	font-weight: bold;
-	font-family: Manrope-Regular;
+	font-family: Voyage-Regular;
 	position: relative;
 	overflow: hidden;
 	-webkit-tap-highlight-color: transparent;
@@ -76,7 +76,7 @@
 
 .works-page-item-image img {
 	width: 100%;
-	min-height: 100%;
+	height: 100%;
 	object-fit: cover;
 	animation: fadeIn 0.5s ease-in-out;
 }

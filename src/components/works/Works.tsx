@@ -16,7 +16,7 @@ export default function Works() {
 				</h3>
 			</ScrollItem> */}
 			<div className='works-collage'>
-				<Image src='/collage.jpg' alt='Collage' className='collage' width={0} height={0} />
+				<Image src='/collage.jpg' alt='Collage' className='collage' width={1200} height={1200} sizes='100vw' />
 			</div>
 			<div className='works-sections'>
 				<ScrollItem type='slideX' slideDistance={-200} transitionDuration={0.8} opacityDuration={1.5}>

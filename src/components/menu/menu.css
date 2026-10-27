@@ -51,6 +51,11 @@
 	scale: 1.1;
 }
 
+.menu-link-current {
+	pointer-events: none;
+	color: #808080 !important;
+}
+
 @media screen and (max-width: 900px) {
 	.menu-links h2 {
 		font-size: 20vw;

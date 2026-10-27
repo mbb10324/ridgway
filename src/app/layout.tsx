@@ -13,7 +13,7 @@ import './globals.css';
 import ClassificationMarking from '@/components/common/ClassificationMarking';
 
 export const metadata: Metadata = {
-	title: 'Primus',
+	title: 'Operational Data Section - XVIII ABC',
 	description: 'XVIII ABC Starter App'
 };
 

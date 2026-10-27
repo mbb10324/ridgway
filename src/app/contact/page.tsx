@@ -13,7 +13,7 @@ export default function Contact() {
 						<textarea placeholder='Message' />
 						<button>Send</button>
 						<p>
-							You can also get in touch with us through our phone or socials which can be found at the bottom of every page
+							You can also get in touch with us by phone or through our socials which can be found at the bottom of every page
 							&darr;
 						</p>
 					</form>

@@ -25,16 +25,24 @@ export default function Menu(props: Readonly<MenuProps>) {
 				{menuOpen && (
 					<>
 						<ScrollItem type='slideX' slideDistance={-400} transitionDuration={0.3} control fire={menuOpen}>
-							<h2 onClick={() => navigateTo('/')}>Home</h2>
+							<h2 onClick={() => navigateTo('/')} className={`${pathname === '/' ? 'menu-link-current' : ''}`}>
+								Home
+							</h2>
 						</ScrollItem>
 						<ScrollItem type='slideX' slideDistance={-400} transitionDuration={0.6} control fire={menuOpen}>
-							<h2 onClick={() => navigateTo('/about')}>About</h2>
+							<h2 onClick={() => navigateTo('/about')} className={`${pathname === '/about' ? 'menu-link-current' : ''}`}>
+								About
+							</h2>
 						</ScrollItem>
 						<ScrollItem type='slideX' slideDistance={-400} transitionDuration={0.9} control fire={menuOpen}>
-							<h2 onClick={() => navigateTo('/works')}>Works</h2>
+							<h2 onClick={() => navigateTo('/works')} className={`${pathname === '/works' ? 'menu-link-current' : ''}`}>
+								Works
+							</h2>
 						</ScrollItem>
 						<ScrollItem type='slideX' slideDistance={-400} transitionDuration={1.2} control fire={menuOpen}>
-							<h2 onClick={() => navigateTo('/contact')}>Contact</h2>
+							<h2 onClick={() => navigateTo('/contact')} className={`${pathname === '/contact' ? 'menu-link-current' : ''}`}>
+								Contact
+							</h2>
 						</ScrollItem>
 					</>
 				)}

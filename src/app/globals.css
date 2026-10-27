@@ -23,7 +23,7 @@ button {
 	-webkit-font-smoothing: antialiased;
 }
 
-:root {
+/* :root {
 	--primary: #141414;
 	--secondary: #f3eee8;
 	--tan: #262523;
@@ -31,6 +31,16 @@ button {
 	--pink: #edb5c4;
 	--yellow: #edebb5;
 	--orange: #edd1b5;
+} */
+
+:root {
+	--primary: #141414;
+	--secondary: #f3eee8;
+	--tan: #262523;
+	--blue: #003F88;
+	--pink: #019ACA;
+	--yellow: #ffcc01;
+	--orange: #ffffff;
 }
 
 /* :root {

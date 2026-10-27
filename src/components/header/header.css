@@ -17,7 +17,7 @@
 }
 
 .header img {
-	width: 200px;
+	width: 120px;
 	height: auto;
 	cursor: pointer;
 	transition: all 0.5s cubic-bezier(0.79, -1, 0.37, 2);

@@ -67,7 +67,13 @@ export default function Works() {
 											Visit Site
 										</Button>
 									</div>
-									<Image src={breakpoint ? item.mobileImg : item.desktopImg} alt='Bill Murray' width={0} height={0} />
+									<Image
+										src={breakpoint ? item.mobileImg : item.desktopImg}
+										alt={item.title}
+										width={breakpoint ? 708 : 2556}
+										height={breakpoint ? 1246 : 1660}
+										sizes='(max-width: 900px) 45vw, 35vw'
+									/>
 								</div>
 							</div>
 						))}
@@ -76,7 +82,7 @@ export default function Works() {
 			</Layout>
 			{hoveredWork && (
 				<div className='works-page-item-image'>
-					<Image src={hoveredWork} alt='Bill Murray' width={0} height={0} />
+					<Image src={hoveredWork} alt='Work preview' width={708} height={1246} sizes='25vw' />
 				</div>
 			)}
 		</>

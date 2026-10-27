@@ -22,7 +22,14 @@ export default function Header() {
 	return (
 		<>
 			<div className={`header ${menuOpen ? 'invert-header' : ''}`}>
-				<Image src='/ridgway.png' alt='Revel Logo' onClick={() => router.push('/')} width={0} height={0} />
+				<Image
+					src='/ridgway.png'
+					alt='Revel Logo'
+					onClick={() => router.push('/')}
+					width={2481}
+					height={1724}
+					sizes='(max-width: 900px) 150px, 200px'
+				/>
 
 				<MenuBtn menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
 				{menuOpen && <div className='header-line' />}
