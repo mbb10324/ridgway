@@ -1,0 +1,156 @@
+.auth-dialog {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1.5rem;
+	padding: clamp(2rem, 5vw, 4rem);
+	overflow: hidden;
+	border-radius: 4rem;
+	color: var(--secondary);
+	background: var(--tan);
+	border: 1px solid rgba(243, 238, 232, 0.12);
+}
+
+.auth-dialog-label,
+.auth-dialog h2,
+.auth-dialog p,
+.auth-dialog li,
+.auth-dialog-action {
+	font-family: Manrope-Regular, sans-serif;
+}
+
+.auth-dialog-label {
+	margin: 0;
+	color: var(--yellow);
+	font-size: 0.7rem;
+	font-weight: 700;
+	letter-spacing: 0.22em;
+	text-transform: uppercase;
+}
+
+.auth-dialog h1,
+.auth-dialog--logout h2 {
+	margin: 0;
+	font-family: Voyage-Regular, serif;
+	font-weight: 400;
+	text-align: center;
+}
+
+.auth-dialog h1 {
+	max-width: 42rem;
+	font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+	line-height: 0.95;
+}
+
+.auth-dialog h2 {
+	max-width: 43rem;
+	margin: 0;
+	font-size: 0.8rem;
+	font-weight: 700;
+	line-height: 1.65;
+	text-align: center;
+}
+
+.auth-dialog ul {
+	max-height: min(12rem, 27vh);
+	margin: 0;
+	padding: 1.25rem 1.25rem 1.25rem 2.75rem;
+	overflow-y: auto;
+	border-block: 1px solid rgba(243, 238, 232, 0.12);
+}
+
+.auth-dialog--consent {
+	gap: 1rem;
+	padding-block: clamp(2rem, 4vw, 3rem);
+}
+
+.auth-dialog li {
+	padding-left: 0.35rem;
+	color: rgba(243, 238, 232, 0.74);
+	font-size: 0.75rem;
+	line-height: 1.7;
+}
+
+.auth-dialog li + li {
+	margin-top: 0.7rem;
+}
+
+.auth-dialog-action {
+	min-width: 11rem;
+	padding: 0.9rem 1.75rem;
+	border: 2px solid var(--pink);
+	border-radius: 9999px;
+	color: var(--primary);
+	background: var(--pink);
+	font-size: 0.9rem;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	cursor: pointer;
+	transition:
+		color 220ms ease,
+		background-color 220ms ease,
+		transform 220ms ease;
+}
+
+.auth-dialog-action:hover {
+	color: var(--secondary);
+	background: transparent;
+	transform: translateY(-2px);
+}
+
+.auth-dialog-action:focus-visible {
+	outline: 3px solid var(--yellow);
+	outline-offset: 4px;
+}
+
+.auth-dialog--logout {
+	width: min(32rem, 100%);
+	margin: auto;
+}
+
+.auth-dialog--logout h2 {
+	font-size: clamp(3rem, 7vw, 5rem);
+	line-height: 1;
+}
+
+.auth-dialog--logout > p:not(.auth-dialog-label) {
+	max-width: 24rem;
+	color: rgba(243, 238, 232, 0.78);
+	font-size: 0.95rem;
+	line-height: 1.7;
+	text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+	.auth-dialog {
+		gap: 1.1rem;
+		padding: 2.5rem 1.5rem 1.75rem;
+		border-radius: 3rem;
+	}
+
+	.auth-dialog::before {
+		left: 2.5rem;
+	}
+
+	.auth-dialog h1 {
+		font-size: 2.4rem;
+	}
+
+	.auth-dialog h2 {
+		font-size: 0.7rem;
+	}
+
+	.auth-dialog ul {
+		max-height: 29vh;
+		padding-left: 2rem;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.auth-dialog-action,
+	.modal,
+	.backdrop {
+		transition: none;
+	}
+}

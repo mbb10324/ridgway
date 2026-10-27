@@ -21,12 +21,12 @@ describe('Splash component tests', () => {
 		expect(screen.getByText('STANDARD MANDATORY DOD NOTICE AND CONSENT')).toBeVisible();
 	});
 
-	it('should display header elements', () => {
+	it('should display the ODS identity', () => {
 		renderWithMock();
 
-		expect(screen.getByTestId('header-component')).toBeVisible();
-		expect(screen.getByRole('heading',{ level: 1, name: 'PRIMUS' })).toBeVisible();
-		expect(screen.getByRole('heading',{ level: 3, name: 'XVIII Airborne Corps Starter Application' })).toBeVisible();
+		expect(screen.getByRole('heading', { level: 1, name: 'ODS' })).toBeVisible();
+		expect(screen.getByText('XVIII Airborne Corps')).toBeVisible();
+		expect(screen.getByText('Built for the Mission. Driven by the Problem.')).toBeVisible();
 	});
 });
 

@@ -53,7 +53,7 @@
 
 .menu-link-current {
 	pointer-events: none;
-	color: #808080 !important;
+	color: #5a5a5a !important;
 }
 
 @media screen and (max-width: 900px) {

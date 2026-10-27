@@ -1,6 +1,7 @@
 import { usePathname, useRouter } from 'next/navigation';
 import ScrollItem from '../../scroll/ScrollItem';
 import './menu.css';
+import LogoutButton from '../profile/LogoutButton';
 
 type MenuProps = {
 	menuOpen: boolean;
@@ -44,6 +45,7 @@ export default function Menu(props: Readonly<MenuProps>) {
 								Contact
 							</h2>
 						</ScrollItem>
+						<LogoutButton />
 					</>
 				)}
 			</div>

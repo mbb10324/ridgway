@@ -3,17 +3,17 @@
 import { useState } from 'react';
 import Layout from '../../layout/RidgwayLayout';
 import './works.css';
-import { worksPageItems } from '../../utils/helpers';
 import Button from '../../components/button/Button';
 import useBreakpoints from '../../hooks/useBreakpoints';
 import useRipple from '../../hooks/useRipple';
 import Image from 'next/image';
+import content from '../../content.json';
 
 export default function Works() {
 	const { rippleStyle, rippleKey, rippleRef, createRipple } = useRipple();
 	const breakpoint = useBreakpoints(900);
 	const [hoveredWork, setHoveredWork] = useState<string | null>(null);
-	const [expandedWork, setExpandedWork] = useState<number | null>(null);
+	const [expandedWork, setExpandedWork] = useState<number | null>(0);
 
 	function handleExpandingWork(index: number) {
 		if (expandedWork === index) {
@@ -28,12 +28,9 @@ export default function Works() {
 			<Layout>
 				<div className='works-page-wrapper'>
 					<h1>Works</h1>
-					<p className='works-page-desc'>
-						We design, develop and ship digital products that drive success for our clients through fresh websites, strong
-						brand systems and compelling creative content.
-					</p>
+					<p className='works-page-desc'>{content.work.text}</p>
 					<div className='works-page-list'>
-						{worksPageItems.map((item, index) => (
+						{content.work.items.map((item, index) => (
 							<div
 								className='works-page-item'
 								key={index}

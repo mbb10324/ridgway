@@ -31,17 +31,29 @@
 	text-shadow: 0 0 3px var(--primary);
 }
 
-.about-text {
+.about-section-text {
 	margin-top: 30px;
 	background-color: var(--tan);
-	padding: 3rem;
+	padding: 2rem;
 	border-radius: 4rem;
-	font-size: 2vw;
+	max-height: 60vh;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+.about-text {
+	padding: 1rem;
+	min-height: 0;
+	font-size: 1.5vw;
 	font-family: Manrope-Regular;
+	overflow-y: auto;
+	white-space: pre-line;
 }
 
 .about-text span {
-	font-size: 3vw;
+	font-size: 2vw;
 	font-family: Voyage-Regular;
 	font-weight: 600;
 }

@@ -1,6 +1,7 @@
 import LavaLamp from '../../components/lava-lamp/LavaLamp';
 import Layout from '../../layout/RidgwayLayout';
 import './about.css';
+import content from '../../content.json';
 
 export default function About() {
 	return (
@@ -10,13 +11,13 @@ export default function About() {
 					<LavaLamp />
 					<div className='about-section'>
 						<h1>About Us</h1>
-						<div className='about-text'>
-							<p>
-								<span className='at-symbol'>@ </span>
-								<span>Revel</span> - we develop modern web applications that transcend the capabilities of the browser. We
-								utilize advanced technologies to design and develop products that provide a superior user experience. Our
-								applications are built to be responsive, scalable, and secure.
-							</p>
+						<div className='about-section-text'>
+							<div className='about-text'>
+								<p>
+									<span className='at-symbol'>@ </span>
+									<span>{content.general.unitName}</span> - {content.about.text}
+								</p>
+							</div>
 						</div>
 					</div>
 				</div>

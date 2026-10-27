@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import './backdrop.css';
 
 type BackdropProps = {
 	show: boolean;
@@ -12,17 +13,18 @@ export default function Backdrop(props: Readonly<BackdropProps>) {
 
 	const shownStyle = useMemo(() => {
 		if (show) {
-			const opacity = transparent ? 'opacity-0' : 'opacity-60';
-			return `${opacity} pointer-events-auto`;
+			return transparent ? 'backdrop--transparent backdrop--visible' : 'backdrop--visible';
 		}
-		return 'opacity-0 pointer-events-none';
+		return 'backdrop--hidden';
 	}, [show, transparent]);
+	const backdropLayer = zIndex === 'z-40' ? 40 : 30;
 
 	return (
 		<div
 			role='presentation'
 			title='backdrop'
-			className={`fixed top-0 left-0 w-full h-full bg-black transition-all duration-1000 ${shownStyle} ${zIndex ?? 'z-30'}`}
+			className={`backdrop ${shownStyle}`}
+			style={{ zIndex: backdropLayer }}
 			onClick={() => onClick && onClick()}
 		/>
 	);

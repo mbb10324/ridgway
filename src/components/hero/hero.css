@@ -61,8 +61,8 @@
 
 .hero-map {
 	position: absolute;
-	top: 23%;
-	right: -1vw;
+	top: 200px;
+	right: -50px;
 	z-index: 6;
 	width: 10vw;
 	height: 10vw;

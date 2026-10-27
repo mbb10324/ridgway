@@ -3,6 +3,7 @@ import LavaLampBorder from '../lava-lamp-border/LavaLampBorder';
 import './about.css';
 import Button from '../button/Button';
 import { useRouter } from 'next/navigation';
+import content from '../../content.json';
 
 export default function About() {
 	const router = useRouter();
@@ -12,9 +13,7 @@ export default function About() {
 			<div className='about-desc-area'>
 				<p>
 					<span className='at-symbol'>@ </span>
-					<span>Revel</span> - we develop modern web applications that transcend the capabilities of the browser. We utilize
-					advanced technologies to design and develop products that provide a superior user experience. Our applications are
-					built to be responsive, scalable, and secure.
+					<span>{content.general.unitName}</span> - {content.home.aboutText}
 				</p>
 				<Button
 					onClick={() => router.push('/about')}

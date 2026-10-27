@@ -16,7 +16,7 @@ describe('DodConsentBanner component tests', () => {
 		render(<DodConsentBanner isLogoutMessage={false} />);
 
 		await userEvent.click(screen.getByRole('button', { name: 'I Consent' }));
-		expect(screen.getByTitle('backdrop')).toHaveClass('opacity-0', 'pointer-events-none');
+		expect(screen.getByTitle('backdrop')).toHaveClass('backdrop--hidden');
 	});
 
 	it('should show the backdrop when the banner is displayed and message is null', () => {
@@ -29,6 +29,6 @@ describe('DodConsentBanner component tests', () => {
 	it('should not render the banner when message is "logged-out"', () => {
 		render(<DodConsentBanner isLogoutMessage={true} />);
 
-		expect(screen.queryByTitle('modal')).toHaveClass('opacity-0');
+		expect(screen.queryByTitle('modal')).toHaveClass('modal--hidden');
 	});
 });

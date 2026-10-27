@@ -37,8 +37,8 @@ button {
 	--primary: #141414;
 	--secondary: #f3eee8;
 	--tan: #262523;
-	--blue: #003F88;
-	--pink: #019ACA;
+	--blue: #003f88;
+	--pink: #019aca;
 	--yellow: #ffcc01;
 	--orange: #ffffff;
 }
@@ -71,6 +71,7 @@ body::-webkit-scrollbar {
 
 body::-webkit-scrollbar-track {
 	background-color: rgba(31, 31, 31);
+	border-radius: 6px;
 }
 
 body::-webkit-scrollbar-thumb {
@@ -79,14 +80,32 @@ body::-webkit-scrollbar-thumb {
 	cursor: pointer;
 }
 
-@font-face {
-	font-family: "Voyage-Regular";
-	src: url(../fonts/GI-400.woff) format("woff");
+.auth-dialog ul::-webkit-scrollbar,
+.about-text::-webkit-scrollbar {
+	width: 12px;
+}
+
+.auth-dialog ul::-webkit-scrollbar-track,
+.about-text::-webkit-scrollbar-track {
+	background-color: rgba(31, 31, 31);
+	border-radius: 6px;
+}
+
+.auth-dialog ul::-webkit-scrollbar-thumb,
+.about-text::-webkit-scrollbar-thumb {
+	background-color: rgb(85, 85, 85);
+	border-radius: 6px;
+	cursor: pointer;
 }
 
 @font-face {
-	font-family: "Manrope-Regular";
-	src: url(../fonts/Manrope-Regular.ttf) format("truetype");
+	font-family: 'Voyage-Regular';
+	src: url(../fonts/GI-400.woff) format('woff');
+}
+
+@font-face {
+	font-family: 'Manrope-Regular';
+	src: url(../fonts/Manrope-Regular.ttf) format('truetype');
 }
 
 /* Custom Ripple Effect */
@@ -201,4 +220,3 @@ body::-webkit-scrollbar-thumb {
 }
 
 /* ============================================================================= */
-

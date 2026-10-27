@@ -7,12 +7,13 @@
 
 .collaborate {
 	position: relative;
-	padding: auto;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	z-index: 2;
 	height: 100vh;
+	padding-left: 100px;
+	padding-right: 100px;
 }
 
 .collaborate-section {
@@ -25,7 +26,7 @@
 
 .collaborate-message {
 	position: relative;
-	font-size: 7vw;
+	font-size: 6vw;
 	color: var(--secondary);
 	font-family: Voyage-Regular;
 	text-align: center;

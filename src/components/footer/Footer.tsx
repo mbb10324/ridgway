@@ -3,6 +3,7 @@
 import Button from '../button/Button';
 import './footer.css';
 import { FaSquareXTwitter, FaSquareFacebook, FaSquareInstagram } from 'react-icons/fa6';
+import content from '../../content.json'
 
 export default function Footer() {
 	return (
@@ -10,13 +11,13 @@ export default function Footer() {
 			<div className='footer-info'>
 				<div className='footer-btn-wrapper'>
 					<Button primary='var(--orange)' secondary='var(--tan)' onClick={() => console.log('phone')}>
-						(281) 806 - 1314
+						{content.general.unitPhone}
 					</Button>
 				</div>
 				<div className='footer-legals'>
 					<p>Terms</p>
 					<span>|</span>
-					<p className='footer-no-hover'>© 2024 Revel</p>
+					<p className='footer-no-hover'>© 2026 {content.general.unitName}</p>
 					<span>|</span>
 					<p>Privacy</p>
 				</div>

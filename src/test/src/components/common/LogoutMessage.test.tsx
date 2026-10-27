@@ -20,7 +20,7 @@ describe('LogoutMessage component tests', () => {
 	it('should not render the logout message when message is not "logged-out"', () => {
 		renderWithMock(false);
 
-		expect(screen.getByTitle('modal')).toHaveClass('opacity-0');
+		expect(screen.getByTitle('modal')).toHaveClass('modal--hidden');
 	});
 
 	it('should hide the modal and backdrop when "Close" button is clicked', async () => {
@@ -29,8 +29,8 @@ describe('LogoutMessage component tests', () => {
 		await userEvent.click(screen.getByRole('button', { name: 'Close' }));
 
 		await waitFor(() => {
-			expect(screen.getByTitle('modal')).toHaveClass('opacity-0');
-			expect(screen.getByTitle('backdrop')).toHaveClass('opacity-0');
+			expect(screen.getByTitle('modal')).toHaveClass('modal--hidden');
+			expect(screen.getByTitle('backdrop')).toHaveClass('backdrop--hidden');
 		});
 	});
 
@@ -40,8 +40,8 @@ describe('LogoutMessage component tests', () => {
 		await userEvent.click(screen.getByTitle('backdrop'));
 
 		await waitFor(() => {
-			expect(screen.getByTitle('modal')).toHaveClass('opacity-0');
-			expect(screen.getByTitle('backdrop')).toHaveClass('opacity-0');
+			expect(screen.getByTitle('modal')).toHaveClass('modal--hidden');
+			expect(screen.getByTitle('backdrop')).toHaveClass('backdrop--hidden');
 		});
 	});
 });
