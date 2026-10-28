@@ -50,6 +50,7 @@
 	font-family: Manrope-Regular;
 	outline: none;
 	transition: all 0.3s linear;
+	color: var(--primary);
 }
 
 .contact-form input:focus {
@@ -68,13 +69,14 @@
 	outline: none;
 	transition: all 0.3s linear;
 	resize: none;
+	color: var(--primary);
 }
 
 .contact-form textarea:focus {
 	border: 4px solid var(--pink);
 }
 
-.contact-form button {
+/* .contact-form button {
 	padding: 10px 30px;
 	border-radius: 3rem;
 	border: 2px solid var(--primary);
@@ -85,13 +87,14 @@
 	outline: none;
 	cursor: pointer;
 	transition: all 0.3s linear;
+	color: var(--primary);
 }
 
 .contact-form button:hover {
 	border: 2px solid var(--pink);
 	background-color: var(--primary);
 	color: var(--orange);
-}
+} */
 
 .contact-form p {
 	font-size: 20px;

@@ -1,3 +1,6 @@
+'use client';
+
+import Button from '@/components/button/Button';
 import Layout from '../../layout/RidgwayLayout';
 import './contact.css';
 
@@ -11,7 +14,9 @@ export default function Contact() {
 						<input type='text' placeholder='Name' />
 						<input type='email' placeholder='Email' />
 						<textarea placeholder='Message' />
-						<button>Send</button>
+						<Button primary='var(--blue)' secondary='var(--secondary)' backdrop='var(--secondary)' onClick={() => {}}>
+							Send
+						</Button>
 						<p>
 							You can also get in touch with us by phone or through our socials which can be found at the bottom of every page
 							&darr;
