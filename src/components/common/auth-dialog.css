@@ -9,7 +9,6 @@
 	border-radius: 4rem;
 	color: var(--secondary);
 	background: var(--tan);
-	border: 1px solid rgba(243, 238, 232, 0.12);
 }
 
 .auth-dialog-label,
@@ -22,7 +21,7 @@
 
 .auth-dialog-label {
 	margin: 0;
-	color: var(--yellow);
+	color: var(--yellow) !important;
 	font-size: 0.7rem;
 	font-weight: 700;
 	letter-spacing: 0.22em;
@@ -67,7 +66,7 @@
 
 .auth-dialog li {
 	padding-left: 0.35rem;
-	color: rgba(243, 238, 232, 0.74);
+	color: var(--secondary);
 	font-size: 0.75rem;
 	line-height: 1.7;
 }
@@ -116,7 +115,7 @@
 
 .auth-dialog--logout > p:not(.auth-dialog-label) {
 	max-width: 24rem;
-	color: rgba(243, 238, 232, 0.78);
+	color: var(--secondary);
 	font-size: 0.95rem;
 	line-height: 1.7;
 	text-align: center;

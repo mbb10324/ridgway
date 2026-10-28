@@ -20,100 +20,132 @@
 		"text": "Explore the software and data capabilities developed in partnership with Soldiers and operational stakeholders. Each solution begins with a real-world challenge and is designed to improve workflows, strengthen readiness, and support mission success.",
 		"items": [
 			{
-				"title": "Duro",
-				"category": "Health & Fitness",
-				"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+				"title": "LASSI",
+				"category": "Drone Operations",
+				"description": "The LASSI project was a project where our team partnered with the 82nd Airborne Division to build a drone operations management system.",
 				"mobileImg": "/srpMobileLeaderboard.png",
 				"desktopImg": "/srpDesktopOverview.jpeg",
 				"link": "https://example.com"
 			},
 			{
-				"title": "Cheetos",
-				"category": "Entertainment",
-				"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+				"title": "DriverReady",
+				"category": "Logistics",
+				"description": "DriverReady is a driver training and certification app. It provides interactive lessons and assessments to ensure drivers are properly trained and certified. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
 				"mobileImg": "/srpMobileLeaderboard.png",
 				"desktopImg": "/srpDesktopOverview.jpeg",
 				"link": "https://example.com"
 			},
 			{
-				"title": "Circa 1800",
-				"category": "Entertainment",
-				"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+				"title": "RotorTrax",
+				"category": "Aircraft Logistics",
+				"description": "A tool for the G32 to track and manage the movement of aircraft and personnel.",
+				"mobileImg": "/srpMobileLeaderboard.png",
+				"desktopImg": "/srpDesktopOverview.jpeg"
+			},
+			{
+				"title": "SkyView",
+				"category": "Deployment Logistics",
+				"description": "Tracking of equipment and personnel as it boards aircrafts.",
+				"mobileImg": "/srpMobileLeaderboard.png",
+				"desktopImg": "/srpDesktopOverview.jpeg"
+			},
+			{
+				"title": "Vantage Tool 1",
+				"category": "Logistics",
+				"description": "Some vantage thing luke did",
 				"mobileImg": "/srpMobileLeaderboard.png",
 				"desktopImg": "/srpDesktopOverview.jpeg",
 				"link": "https://example.com"
 			},
 			{
-				"title": "Pyxis",
-				"category": "Food & Beverage",
-				"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+				"title": "Vantage Tool 2",
+				"category": "Resource Management",
+				"description": "Some vantage thing haleys team did",
 				"mobileImg": "/srpMobileLeaderboard.png",
 				"desktopImg": "/srpDesktopOverview.jpeg",
 				"link": "https://example.com"
 			},
 			{
-				"title": "react-figura",
-				"category": "Open Source",
-				"description": "I am the creator of react-figura, a TypeScript-based npm library that streamlines form handling in React applications. Designed to provide a comprehensive, performant, and lightweight solution, the library has garnered over 20,000 installs as of the time of this writing. react-figura offers a suite of 33 fully customizable components that cover an extensive range of input types, thus eliminating the need for boilerplate code and accelerating development cycles. This project showcases my commitment as a developer to write efficient code, understand the nuances of front-end development, and establishes a proven track record of delivering widely-used solutions.",
+				"title": "LOGTAK",
+				"category": "Logistics",
+				"description": "LOGTAK is a logistics management application designed to streamline operations and improve efficiency.",
 				"mobileImg": "/srpMobileLeaderboard.png",
 				"desktopImg": "/srpDesktopOverview.jpeg",
 				"link": "https://example.com"
 			},
 			{
-				"title": "just the tip",
-				"category": "Fitness",
-				"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+				"title": "AmmoOp",
+				"category": "Ammo Logistics",
+				"description": "AmmoOp is an ammo calculator app. Tell it the event and number of shooters and it will calculate the amount of ammo needed for the event.",
 				"mobileImg": "/srpMobileLeaderboard.png",
 				"desktopImg": "/srpDesktopOverview.jpeg",
 				"link": "https://example.com"
 			},
 			{
-				"title": "react-arca",
-				"category": "Health & Fitness",
-				"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+				"title": "EXFIL",
+				"category": "Logistics",
+				"description": "An app made for managing and tracking logistics operations.",
 				"mobileImg": "/srpMobileLeaderboard.png",
 				"desktopImg": "/srpDesktopOverview.jpeg",
 				"link": "https://example.com"
 			},
 			{
-				"title": "Calorie Tracker",
-				"category": "Food & Beverage",
-				"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+				"title": "STIG Viewer",
+				"category": "Internal Tool",
+				"description": "STIG Viewer is an internal tool designed to help users identify and remediate security vulnerabilities in their systems. It provides a comprehensive solution for managing and tracking STIG compliance across the organization.",
 				"mobileImg": "/srpMobileLeaderboard.png",
 				"desktopImg": "/srpDesktopOverview.jpeg",
 				"link": "https://example.com"
 			},
 			{
-				"title": "react-scroll-animation",
-				"category": "Open Source",
-				"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+				"title": "FULCRUM",
+				"category": "Cloud Infrastructure",
+				"description": "FULCRUM is a cloud infrastructure solution specific for the corps, and the first of its kind in the army.",
 				"mobileImg": "/srpMobileLeaderboard.png",
 				"desktopImg": "/srpDesktopOverview.jpeg",
 				"link": "https://example.com"
 			},
 			{
-				"title": "react-onus",
-				"category": "Fitness",
-				"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+				"title": "PRIMUS",
+				"category": "Starter Application",
+				"description": "Primus is a starter application that was stig compliant and ato approved for use within the corp.",
 				"mobileImg": "/srpMobileLeaderboard.png",
-				"desktopImg": "/srpDesktopOverview.jpeg",
-				"link": "https://example.com"
+				"desktopImg": "/srpDesktopOverview.jpeg"
 			},
 			{
-				"title": "Miles Breman",
-				"category": "Health & Fitness",
-				"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+				"title": "LF-DCSA",
+				"category": "H2F",
+				"description": "LF-DCSA was a much more streamlined version of SRP. It took inspiration from both SRP and SHIELD and was packaged into a product for a customer.",
 				"mobileImg": "/srpMobileLeaderboard.png",
-				"desktopImg": "/srpDesktopOverview.jpeg",
-				"link": "https://example.com"
+				"desktopImg": "/srpDesktopOverview.jpeg"
 			},
 			{
-				"title": "Pizza Palace",
-				"category": "Health & Fitness",
-				"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+				"title": "LET",
+				"category": "Leadership",
+				"description": "The Leader Engagement Tool was designed a place leaders could engage with each other internally. It had a system for reporting incidents.",
 				"mobileImg": "/srpMobileLeaderboard.png",
-				"desktopImg": "/srpDesktopOverview.jpeg",
-				"link": "https://example.com"
+				"desktopImg": "/srpDesktopOverview.jpeg"
+			},
+			{
+				"title": "SHIELD",
+				"category": "H2F",
+				"description": "SHIELD was the evolution of SRP. Shield was designed as a much improved and comprehensive version of the original SRP concept.",
+				"mobileImg": "/srpMobileLeaderboard.png",
+				"desktopImg": "/srpDesktopOverview.jpeg"
+			},
+			{
+				"title": "SRP",
+				"category": "H2F",
+				"description": "SRP was the original vision for the corp to build a readiness platform that supported the newly incorporated H2F program.",
+				"mobileImg": "/srpMobileLeaderboard.png",
+				"desktopImg": "/srpDesktopOverview.jpeg"
+			},
+			{
+				"title": "Sentinel",
+				"category": "Human Resources",
+				"description": "Sentinel was the first project that the ODS team worked on (At the time we were considered the DWC or Data Warfare Company). It was an application designed to streamline the way that an s3 schools section files there paperwork.",
+				"mobileImg": "/srpMobileLeaderboard.png",
+				"desktopImg": "/srpDesktopOverview.jpeg"
 			}
 		]
 	}

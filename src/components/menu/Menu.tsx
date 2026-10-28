@@ -30,30 +30,28 @@ export default function Menu(props: Readonly<MenuProps>) {
 	return (
 		<div className={`menu ${menuOpen ? 'menu-container-open' : 'menu-container-closed'}`}>
 			<div className='menu-links'>
-				{menuOpen && (
-					<>
-						<ScrollItem type='slideX' slideDistance={-400} transitionDuration={0.3} control fire={menuOpen}>
-							<h2 onClick={() => navigateTo('/')} className={`${pathname === '/' ? 'menu-link-current' : ''}`}>
-								Home
-							</h2>
-						</ScrollItem>
-						<ScrollItem type='slideX' slideDistance={-400} transitionDuration={0.6} control fire={menuOpen}>
-							<h2 onClick={() => navigateTo('/about')} className={`${pathname === '/about' ? 'menu-link-current' : ''}`}>
-								About
-							</h2>
-						</ScrollItem>
-						<ScrollItem type='slideX' slideDistance={-400} transitionDuration={0.9} control fire={menuOpen}>
-							<h2 onClick={() => navigateTo('/works')} className={`${pathname === '/works' ? 'menu-link-current' : ''}`}>
-								Works
-							</h2>
-						</ScrollItem>
-						<ScrollItem type='slideX' slideDistance={-400} transitionDuration={1.2} control fire={menuOpen}>
-							<h2 onClick={() => navigateTo('/contact')} className={`${pathname === '/contact' ? 'menu-link-current' : ''}`}>
-								Contact
-							</h2>
-						</ScrollItem>
-					</>
-				)}
+				<>
+					<ScrollItem type='slideX' slideDistance={-200} transitionDuration={1} control fire={menuOpen}>
+						<h2 onClick={() => navigateTo('/')} className={`${pathname === '/' ? 'menu-link-current' : ''}`}>
+							Home
+						</h2>
+					</ScrollItem>
+					<ScrollItem type='slideX' slideDistance={-400} transitionDuration={1} control fire={menuOpen}>
+						<h2 onClick={() => navigateTo('/about')} className={`${pathname === '/about' ? 'menu-link-current' : ''}`}>
+							About
+						</h2>
+					</ScrollItem>
+					<ScrollItem type='slideX' slideDistance={-600} transitionDuration={1} control fire={menuOpen}>
+						<h2 onClick={() => navigateTo('/works')} className={`${pathname === '/works' ? 'menu-link-current' : ''}`}>
+							Works
+						</h2>
+					</ScrollItem>
+					<ScrollItem type='slideX' slideDistance={-800} transitionDuration={1} control fire={menuOpen}>
+						<h2 onClick={() => navigateTo('/contact')} className={`${pathname === '/contact' ? 'menu-link-current' : ''}`}>
+							Contact
+						</h2>
+					</ScrollItem>
+				</>
 			</div>
 			{menuOpen && (
 				<DelayedComponent trigger={menuOpen} delay={500}>

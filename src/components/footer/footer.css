@@ -76,7 +76,7 @@
 }
 
 .footer-socials-icons {
-	color: var(--blue);
+	color: var(--pink);
 	padding: 10px;
 	display: flex;
 	justify-content: center;
@@ -93,7 +93,7 @@
 
 .footer-socials-icons:hover {
 	color: var(--primary);
-	background-color: var(--blue);
+	background-color: var(--pink);
 }
 
 .footer-btn-wrapper {

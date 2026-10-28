@@ -54,7 +54,8 @@
 
 .menu-link-current {
 	pointer-events: none;
-	color: #5a5a5a !important;
+	color: var(--tan) !important;
+	opacity: 0.9;
 }
 
 .menu-line {

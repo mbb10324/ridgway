@@ -14,7 +14,7 @@
 
 .auth-dialog--delete-account > p:not(.auth-dialog-label) {
 	max-width: 24rem;
-	color: rgba(243, 238, 232, 0.78);
+	color: var(--secondary);
 	font-size: 0.95rem;
 	line-height: 1.7;
 	text-align: center;

@@ -53,16 +53,26 @@ export default function Works() {
 								<div
 									className={`works-page-item-expanded-content ${expandedWork === index ? 'content-open' : 'content-closed'}`}
 								>
-									<div className='works-page-item-expanded-description'>
+									<div
+										className='works-page-item-expanded-description'
+										style={{
+											justifyContent: item.description.length > 600 ? 'flex-start' : 'center',
+											overflowY: item.description.length > 600 ? 'scroll' : 'hidden'
+										}}
+									>
 										<p>{item.description}</p>
-										<Button
-											onClick={() => window.open(item.link, '_blank', 'noreferrer')}
-											primary='var(--secondary)'
-											secondary='var(--tan)'
-											fontSize='2rem'
-										>
-											Visit Site
-										</Button>
+										{item.link ? (
+											<Button
+												onClick={() => window.open(item.link, '_blank', 'noreferrer')}
+												primary='var(--secondary)'
+												secondary='var(--tan)'
+												fontSize='2rem'
+											>
+												Visit Site
+											</Button>
+										) : (
+											<h4>Contact us to learn more about {item.title}</h4>
+										)}
 									</div>
 									<Image
 										src={breakpoint ? item.mobileImg : item.desktopImg}

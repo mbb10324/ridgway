@@ -23,16 +23,18 @@ button {
 	-webkit-font-smoothing: antialiased;
 }
 
+/* LIGHT MODE COLOR SCHEME */
 /* :root {
-	--primary: #141414;
-	--secondary: #f3eee8;
-	--tan: #262523;
-	--blue: #b5c6ed;
-	--pink: #edb5c4;
-	--yellow: #edebb5;
-	--orange: #edd1b5;
+	--primary: #f3eee8;
+	--secondary: #141414;
+	--tan: #e1dcd3;
+	--blue: #ffcc01;
+	--pink: #019aca;
+	--yellow: #003f88;
+	--orange: #000000;
 } */
 
+/* DARK MODE COLOR SCHEME */
 :root {
 	--primary: #141414;
 	--secondary: #f3eee8;
@@ -42,16 +44,6 @@ button {
 	--yellow: #ffcc01;
 	--orange: #ffffff;
 }
-
-/* :root {
-	--primary: #141414;
-	--secondary: #f3eee8;
-	--tan: #262523;
-	--blue: #41ead4;
-	--pink: #ff206e;
-	--yellow: #fbff12;
-	--orange: #ff7920;
-} */
 
 .app {
 	display: flex;
@@ -80,17 +72,20 @@ body::-webkit-scrollbar-thumb {
 	cursor: pointer;
 }
 
+.works-page-item-expanded-description::-webkit-scrollbar,
 .auth-dialog ul::-webkit-scrollbar,
 .about-text::-webkit-scrollbar {
 	width: 12px;
 }
 
+.works-page-item-expanded-description::-webkit-scrollbar-track,
 .auth-dialog ul::-webkit-scrollbar-track,
 .about-text::-webkit-scrollbar-track {
 	background-color: rgba(31, 31, 31);
 	border-radius: 6px;
 }
 
+.works-page-item-expanded-description::-webkit-scrollbar-thumb,
 .auth-dialog ul::-webkit-scrollbar-thumb,
 .about-text::-webkit-scrollbar-thumb {
 	background-color: rgb(85, 85, 85);
